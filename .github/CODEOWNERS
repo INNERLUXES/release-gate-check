@@ -1,0 +1,16 @@
+# Every change is reviewed by a maintainer.
+* @innerluxesdev
+
+# The sentences come from the saved pages, and the readers, the criteria reader and the gates decide every verdict; changes need extra care.
+/src/data.js @innerluxesdev
+/research/ @innerluxesdev
+/src/files.js @innerluxesdev
+/src/xml.js @innerluxesdev
+/src/json.js @innerluxesdev
+/src/csv.js @innerluxesdev
+/src/lcov.js @innerluxesdev
+/src/cobertura.js @innerluxesdev
+/src/junit.js @innerluxesdev
+/src/criteria.js @innerluxesdev
+/src/gates.js @innerluxesdev
+/src/check.js @innerluxesdev
