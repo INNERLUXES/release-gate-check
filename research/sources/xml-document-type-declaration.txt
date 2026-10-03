@@ -1,0 +1,52 @@
+Source: https://www.w3.org/TR/xml/#sec-prolog-dtd
+
+2.8 Prolog and Document Type Declaration
+
+[Definition: XML documents SHOULD
+begin with an XML declaration which specifies the version of
+XML being used.] For example, the following is a complete XML document, well-formed but not valid:
+<?xml version="1.0"?>
+<greeting>Hello, world!</greeting>
+
+and so is this:
+<greeting>Hello, world!</greeting>
+
+The function of the markup in an XML document is to describe its storage and
+logical structure and to associate attribute
+name-value pairs with its logical structures. XML provides a mechanism, the
+document
+type declaration, to define constraints on the logical structure
+and to support the use of predefined storage units. [Definition: An XML document is valid if it has an associated
+document type declaration and if the document complies with the constraints
+expressed in it.]
+
+The document type declaration MUST appear before the first element
+in the document.
+
+[Definition: The XML document
+type declaration contains or points to markup
+declarations that provide a grammar for a class of documents. This
+grammar is known as a document type definition, or DTD. The document
+type declaration can point to an external subset (a special kind of external entity) containing markup declarations,
+or can contain the markup declarations directly in an internal subset, or
+can do both. The DTD for a document consists of both subsets taken together.]
+
+An example of an XML document with a document type declaration:
+<?xml version="1.0"?>
+<!DOCTYPE greeting SYSTEM "hello.dtd">
+<greeting>Hello, world!</greeting>
+
+The system identifier
+"hello.dtd"
+gives the address (a URI reference) of a DTD for the document.
+The declarations can also be given locally, as in this example:
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE greeting [
+<!ELEMENT greeting (#PCDATA)>
+]>
+<greeting>Hello, world!</greeting>
+
+If both the external and internal subsets are used, the internal subset
+MUST be considered to occur before the external subset.
+This has the effect that entity and attribute-list declarations in the internal
+subset take precedence over those in the external subset.

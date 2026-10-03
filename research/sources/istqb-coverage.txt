@@ -1,0 +1,6 @@
+Source: https://glossary.istqb.org/en_US/term/coverage
+Read from: https://api.glossary.istqb.org/v1/terms/coverage (the service that the glossary page calls)
+
+ISTQB Glossary, term: coverage
+
+Definition: The degree to which specified coverage items are exercised by a test suite, expressed as a percentage.

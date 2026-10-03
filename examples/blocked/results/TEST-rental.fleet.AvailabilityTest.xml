@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="rental.fleet.AvailabilityTest" tests="12" failures="0" errors="0" skipped="2" time="1.5">
+  <testcase name="showsBikesNearStation" classname="rental.fleet.AvailabilityTest" time="0.021"/>
+  <testcase name="hidesBikesInRepair" classname="rental.fleet.AvailabilityTest" time="0.021"/>
+  <testcase name="countsFreeBikesPerStation" classname="rental.fleet.AvailabilityTest" time="0.021"/>
+  <testcase name="sortsStationsByDistance" classname="rental.fleet.AvailabilityTest" time="0.021"/>
+  <testcase name="showsChildBikes" classname="rental.fleet.AvailabilityTest" time="0.021"/>
+  <testcase name="showsElectricBikes" classname="rental.fleet.AvailabilityTest" time="0.021"/>
+  <testcase name="marksBikesAsReturned" classname="rental.fleet.AvailabilityTest" time="0.021"/>
+  <testcase name="blocksReturnToAFullStation" classname="rental.fleet.AvailabilityTest" time="0.021"/>
+  <testcase name="movesBikeBetweenStations" classname="rental.fleet.AvailabilityTest" time="0.021"/>
+  <testcase name="listsStationsOfTheCity" classname="rental.fleet.AvailabilityTest" time="0.021"/>
+  <testcase name="readsTheLiveFeed" classname="rental.fleet.AvailabilityTest" time="0.021">
+    <skipped message="waiting for the new fleet feed"/>
+  </testcase>
+  <testcase name="fallsBackToTheLastFeed" classname="rental.fleet.AvailabilityTest" time="0.021">
+    <skipped message="waiting for the new fleet feed"/>
+  </testcase>
+</testsuite>

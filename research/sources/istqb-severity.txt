@@ -1,0 +1,6 @@
+Source: https://glossary.istqb.org/en_US/term/severity
+Read from: https://api.glossary.istqb.org/v1/terms/severity (the service that the glossary page calls)
+
+ISTQB Glossary, term: severity
+
+Definition: The degree of impact that a defect has on the development, testing or operation of a component or system.

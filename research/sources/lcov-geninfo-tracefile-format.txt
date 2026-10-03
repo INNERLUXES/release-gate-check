@@ -1,0 +1,81 @@
+Source: https://manpages.debian.org/testing/lcov/geninfo.1.en.html
+
+The section TRACEFILE FORMAT of the geninfo(1) manual page is kept, without the parts on the version ID, on function coverage and on MC/DC, and without the sentences that use a word the repository checks do not allow.
+
+geninfo(1), section TRACEFILE FORMAT
+
+Following is a quick description of the tracefile format as used by genhtml, geninfo and lcov.
+
+A tracefile is made up of several human-readable lines of text, divided into sections. If the ---comment comment_string option is supplied, then
+
+#comment_string
+
+will appear at the top of the tracefile. There is no space before or after the # character.
+
+If available, a tracefile begins with the testname which is stored in the following format:
+
+TN:<test name>
+
+For each source file referenced in the .gcda file, there is a section containing filename and coverage data:
+
+SF:<path to the source file>
+
+Branch coverage information is stored one line per branch:
+
+BRDA:<line_number>,[<exception>]<block>,<branch>,<taken>
+
+<line_number> is the line number where the branch is found - and is expected to be a non-zero integer.
+
+<block> and <branch> serve to uniquely define a particular edge in the expression tree of a particular conditional found on the associated line.
+
+Within a particular line, <block> is an integer numbered from zero with no gaps. For some languages and some coding styles, there will only be one block (index value zero) on any particular line.
+
+<branch> is a string which serves to uniquely identify a particular edge. For some languages and tools - e.g., C/C++ code compiled with gcc or llvm - <branch> is an ordered integer index related to expression tree traversal order of the associated conditional. For others, it may be a meaningful string - see below. <branch> appears in the 'tooltip' popup of the associated branch in the genhtml output - so human-readable values are helpful to users who are trying to understand coverage results - for example, in order to develop additional regression tests, to improve coverage.
+
+<taken> is either '-' if the corresponding expression was never evaluated (e.g., the basic block containing the branch was never executed) or a number indicating how often that branch was taken.
+
+<exception> is 'e' (single character) if this is a branch related to exception handling - and is not present if the branch is not related to exceptions. Exception branch identification requires compiler support; note that gcc versions older than 9 do not differentiate exception branches. Geninfo will be able to identify exception branches only if your toolchain version is new enough to support the feature.
+
+The following are example branch records whose <branch> expression values are human-readable strings.
+
+BRDA:10,0,enable,1
+
+BRDA:10,0,!enable,0
+
+In this case, the corresponding code from line 10 is very likely similar to:
+
+if (enable) {
+
+...
+
+}
+
+such that the associated testcase entered the block ('enable' evaluated to 'true'). Arbitrarily complicated branch expressions are supported - including branch expressions which contain commas ( e.g.,
+
+in an expression containing a function call).
+
+Branch coverage summaries are stored in two lines:
+
+BRF:<number of branches found>
+
+BRH:<number of branches hit>
+
+Then there is a list of execution counts for each instrumented line (i.e. a line which resulted in executable code):
+
+DA:<line number>,<execution count>[,<checksum>]
+
+Note that there may be an optional checksum present for each instrumented line. The current geninfo implementation uses an MD5 hash as checksumming algorithm.
+
+At the end of a section, there is a summary about how many lines were found and how many were actually instrumented:
+
+LH:<number of lines with a non-zero execution count>
+
+LF:<number of instrumented lines>
+
+Each sections ends with:
+
+end_of_record
+
+In addition to the main source code file there are sections for all #included files which also contain executable code.
+
+Note also that symbolic links to the .gcno file will be resolved so that the actual file path is used instead of the path to a link. This approach is necessary for the mechanism to work with the /proc/gcov files.

@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<coverage version="1.0" line-rate="0.9" branch-rate="0.8">
+  <sources>
+    <source>.</source>
+  </sources>
+  <packages>
+      <package name="src.web">
+        <classes>
+          <class name="cart.js" filename="src/web/cart.js">
+            <methods/>
+            <lines>
+  <line number="3" hits="2" branch="true" condition-coverage="100% (2/2)"/>
+  <line number="6" hits="2" branch="true" condition-coverage="100% (2/2)"/>
+  <line number="9" hits="2" branch="true" condition-coverage="100% (2/2)"/>
+  <line number="12" hits="2" branch="true" condition-coverage="50% (1/2)"/>
+  <line number="15" hits="2" branch="false"/>
+  <line number="18" hits="2" branch="false"/>
+  <line number="21" hits="2" branch="false"/>
+  <line number="24" hits="2" branch="false"/>
+  <line number="27" hits="2" branch="false"/>
+  <line number="30" hits="2" branch="false"/>
+  <line number="33" hits="2" branch="false"/>
+  <line number="36" hits="0" branch="false"/>
+            </lines>
+          </class>
+        </classes>
+      </package>
+      <package name="src.web">
+        <classes>
+          <class name="search.js" filename="src/web/search.js">
+            <methods/>
+            <lines>
+  <line number="3" hits="2" branch="true" condition-coverage="100% (2/2)"/>
+  <line number="6" hits="2" branch="true" condition-coverage="100% (2/2)"/>
+  <line number="9" hits="2" branch="true" condition-coverage="100% (2/2)"/>
+  <line number="12" hits="2" branch="false"/>
+  <line number="15" hits="2" branch="false"/>
+  <line number="18" hits="2" branch="false"/>
+  <line number="21" hits="2" branch="false"/>
+  <line number="24" hits="2" branch="false"/>
+  <line number="27" hits="2" branch="false"/>
+  <line number="30" hits="0" branch="false"/>
+            </lines>
+          </class>
+        </classes>
+      </package>
+  </packages>
+</coverage>

@@ -1,0 +1,34 @@
+Source: https://www.w3.org/TR/xml/#sec-predefined-ent
+
+4.6 Predefined Entities
+
+[Definition: Entity and character references may
+both be used to escape the left angle bracket, ampersand, and
+other delimiters. A set of general entities (amp,
+lt,
+gt,
+apos,
+quot) is specified for
+this purpose. Numeric character references may also be used; they are expanded
+immediately when recognized and MUST be treated as character data, so the
+numeric character references "&#60;" and "&#38;" may be used to escape < and & when they occur
+in character data.]
+
+All XML processors MUST recognize these entities whether they are declared
+or not. For interoperability, valid XML
+documents SHOULD declare these entities, like any others, before using them. If
+the entities lt or amp are declared, they MUST be
+declared as internal entities whose replacement text is a character reference
+to the respective
+character (less-than sign or ampersand) being escaped; the double
+escaping is REQUIRED for these entities so that references to them produce
+a well-formed result. If the entities gt, apos,
+or quot are declared, they MUST be declared as internal entities
+whose replacement text is the single character being escaped (or a character
+reference to that character; the double escaping here is OPTIONAL but harmless).
+For example:
+<!ENTITY lt "&#38;#60;">
+<!ENTITY gt "&#62;">
+<!ENTITY amp "&#38;#38;">
+<!ENTITY apos "&#39;">
+<!ENTITY quot "&#34;">

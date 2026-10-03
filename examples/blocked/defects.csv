@@ -1,0 +1,16 @@
+Key,Summary,Priority,State,Component
+BR-101,Booking page freezes on a double tap,Blocker,Open,booking
+BR-102,"Deposit shows ""0"" for large, bulk bookings",Critical,In Progress,payment
+BR-103,Station list is slow after midnight,Major,Open,fleet
+BR-104,Receipt misses the tax line,Major,Open,payment
+BR-105,Map pin is off by a street,Major,In Progress,fleet
+BR-106,Late fee is rounded the wrong way,Major,Open,payment
+BR-107,Typo on the cancel page,Minor,Open,booking
+BR-108,Footer link is grey,Minor,Open,web
+BR-109,Old banner is still in the assets,Minor,Open,web
+BR-110,Station names are not sorted in German,Minor,Open,fleet
+BR-111,Empty state text is too long,Minor,Open,web
+BR-090,Crash on empty cart,Blocker,Done,booking
+BR-091,Wrong currency in the receipt,Critical,Closed,payment
+BR-092,Duplicate station,Major,Done,fleet
+BR-093,Slow search,Major,Rejected,fleet

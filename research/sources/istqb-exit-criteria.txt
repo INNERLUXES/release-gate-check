@@ -1,0 +1,6 @@
+Source: https://glossary.istqb.org/en_US/term/exit-criteria
+Read from: https://api.glossary.istqb.org/v1/terms/exit-criteria (the service that the glossary page calls)
+
+ISTQB Glossary, term: exit criteria
+
+Definition: The set of conditions for officially completing a defined task.

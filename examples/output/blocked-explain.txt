@@ -1,0 +1,184 @@
+release-gate-check: examples/criteria.json (Bike rental booking service, release 2.4)
+inputs: results: 3 files, 30 testcases, 30 distinct tests; 2 earlier runs; coverage: 1 report, 4 source files; 4 changed files; 15 defects; evidence folder examples/blocked/evidence
+gates: 3 met, 12 not met, 0 not checked
+
+Test results (5 gates)
+
+  NOT MET      pass-rate  Minimum pass rate
+               requirement: at least 98% of the executed tests pass
+               found: 96.42% (27 of 28 executed tests passed, 1 flaky test counted as passed)
+               why: 1 test failed or had an error
+               - failed: rental.booking.BookingTest > createsBookingForTwoBikes
+               from: examples/blocked/results/TEST-rental.booking.BookingTest.xml  10 testcases read
+               from: examples/blocked/results/TEST-rental.fleet.AvailabilityTest.xml  12 testcases read
+               from: examples/blocked/results/TEST-rental.payment.DepositTest.xml  8 testcases read
+               from: examples/blocked/results/TEST-rental.booking.BookingTest.xml:4  failed: rental.booking.BookingTest > createsBookingForTwoBikes (expected 2 bikes on the booking but found 1)
+               basis: "The set of conditions for officially completing a defined task." (exit criteria, https://glossary.istqb.org/en_US/term/exit-criteria)
+               basis: "<xs:element name="testcase" minOccurs="0" maxOccurs="unbounded">" (testsuite, https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd)
+
+  NOT MET      critical-suites  Failing tests in critical suites
+               requirement: at most 0 failing tests in rental.booking.BookingTest and rental.payment.DepositTest
+               found: 1 failing in 2 suites with results
+               why: 1 failing test, above 0
+               - failed: rental.booking.BookingTest > createsBookingForTwoBikes
+               from: examples/blocked/results/TEST-rental.booking.BookingTest.xml:3  rental.booking.BookingTest: 10 tests
+               from: examples/blocked/results/TEST-rental.booking.BookingTest.xml:4  failed: rental.booking.BookingTest > createsBookingForTwoBikes
+               from: examples/blocked/results/TEST-rental.payment.DepositTest.xml:3  rental.payment.DepositTest: 8 tests
+               basis: "The set of conditions for officially completing a defined task." (exit criteria, https://glossary.istqb.org/en_US/term/exit-criteria)
+               basis: "<xs:attribute name="classname" type="xs:string"/>" (testcase, https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd)
+
+  NOT MET      skipped-share  Maximum skipped share
+               requirement: at most 5% of the tests skipped
+               found: 6.66% (2 of 30 tests skipped)
+               why: too many tests were skipped
+               - rental.fleet.AvailabilityTest > readsTheLiveFeed
+               - rental.fleet.AvailabilityTest > fallsBackToTheLastFeed
+               from: examples/blocked/results/TEST-rental.fleet.AvailabilityTest.xml:13  skipped: rental.fleet.AvailabilityTest > readsTheLiveFeed
+               from: examples/blocked/results/TEST-rental.fleet.AvailabilityTest.xml:16  skipped: rental.fleet.AvailabilityTest > fallsBackToTheLastFeed
+               basis: "The set of conditions for officially completing a defined task." (exit criteria, https://glossary.istqb.org/en_US/term/exit-criteria)
+               basis: "<xs:element name="skipped" nillable="true" minOccurs="0" maxOccurs="1">" (testcase, https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd)
+
+  NOT MET      flaky-count  Maximum flaky tests
+               requirement: at most 0 flaky tests
+               found: 1 flaky test
+               why: 1 test passed and failed in one run, or passed after a retry
+               - rental.payment.DepositTest > refundsDepositAfterReturn
+               from: examples/blocked/results/TEST-rental.payment.DepositTest.xml:4  flaky: rental.payment.DepositTest > refundsDepositAfterReturn (passed, 1 retry written by the runner)
+               basis: "Then this test will be counted as a flaky test." (Output flaky re-run information on the screen, https://maven.apache.org/surefire/maven-surefire-plugin/examples/rerun-failing-tests.html)
+               basis: "This will fail the build if more than the specified number of tests are flaky, i.e. if they had a successful run after previously failing." (Re-run and fail the build upon flaky test count, https://maven.apache.org/surefire/maven-surefire-plugin/examples/rerun-failing-tests.html)
+
+  NOT MET      unexplained-failures  No unexplained failure in the last runs
+               requirement: no test failed in the last 3 runs unless it is explained (1 test explained)
+               found: 2 unexplained failing tests in 3 runs
+               why: a test failed in a recent run and nobody has explained it
+               - rental.booking.BookingTest > cancelsBookingWithinOneHour (failed in run-1)
+               - rental.booking.BookingTest > createsBookingForTwoBikes (failed in release candidate)
+               from: run run-1: 2 failing tests
+               from: run run-2: 1 failing test
+               from: run release candidate: 1 failing test
+               from: examples/blocked/history/run-1/TEST-rental.booking.BookingTest.xml:7  unexplained: rental.booking.BookingTest > cancelsBookingWithinOneHour
+               from: examples/blocked/results/TEST-rental.booking.BookingTest.xml:4  unexplained: rental.booking.BookingTest > createsBookingForTwoBikes
+               basis: "The set of conditions for officially completing a defined task." (exit criteria, https://glossary.istqb.org/en_US/term/exit-criteria)
+               basis: "<xs:element name="testcase" minOccurs="0" maxOccurs="unbounded">" (testsuite, https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd)
+
+Coverage (4 gates)
+
+  MET          line-coverage  Minimum line coverage
+               requirement: at least 80% of the lines covered
+               found: 81.66% (49 of 60 lines in 3 files; 1 file left out by coverage.exclude)
+               from: examples/blocked/coverage/lcov.info:2  src/booking/booking.js: 18 of 20 lines covered
+               from: examples/blocked/coverage/lcov.info:65  src/fleet/availability.js: 17 of 25 lines covered
+               from: examples/blocked/coverage/lcov.info:37  src/payment/deposit.js: 14 of 15 lines covered
+               basis: "The degree to which specified coverage items are exercised by a test suite, expressed as a percentage." (coverage, https://glossary.istqb.org/en_US/term/coverage)
+               basis: "DA:<line number>,<execution count>[,<checksum>]" (TRACEFILE FORMAT, https://manpages.debian.org/testing/lcov/geninfo.1.en.html)
+
+  NOT MET      branch-coverage  Minimum branch coverage
+               requirement: at least 70% of the branches covered
+               found: 66.66% (16 of 24 branches; 1 file left out by coverage.exclude)
+               why: too few branches are covered
+               from: examples/blocked/coverage/lcov.info:2  src/booking/booking.js: 5 of 8 branches covered
+               from: examples/blocked/coverage/lcov.info:65  src/fleet/availability.js: 6 of 10 branches covered
+               from: examples/blocked/coverage/lcov.info:37  src/payment/deposit.js: 5 of 6 branches covered
+               basis: "The coverage of branches in a control flow graph." (branch coverage, https://glossary.istqb.org/en_US/term/branch-coverage)
+               basis: "BRDA:<line_number>,[<exception>]<block>,<branch>,<taken>" (TRACEFILE FORMAT, https://manpages.debian.org/testing/lcov/geninfo.1.en.html)
+
+  NOT MET      changed-line-coverage  Minimum line coverage of changed files
+               requirement: at least 90% of the lines of changed files covered
+               found: 1 changed file with no coverage record
+               why: a changed file with no coverage record is not counted as covered; add it to coverage.changedFiles.ignore only when it holds no code
+               - no coverage record: src/fleet/new-search.js
+               from: examples/blocked/changed-files.txt:2  changed: src/booking/booking.js -> src/booking/booking.js
+               from: examples/blocked/changed-files.txt:3  changed: src/fleet/availability.js -> src/fleet/availability.js
+               from: examples/blocked/changed-files.txt:4  changed: src/fleet/new-search.js -> no coverage record
+               from: examples/blocked/coverage/lcov.info:2  src/booking/booking.js: 18 of 20 lines covered
+               from: examples/blocked/coverage/lcov.info:65  src/fleet/availability.js: 17 of 25 lines covered
+               basis: "The degree to which specified coverage items are exercised by a test suite, expressed as a percentage." (coverage, https://glossary.istqb.org/en_US/term/coverage)
+               basis: "SF:<path to the source file>" (TRACEFILE FORMAT, https://manpages.debian.org/testing/lcov/geninfo.1.en.html)
+
+  NOT MET      changed-branch-coverage  Minimum branch coverage of changed files
+               requirement: at least 60% of the branches of changed files covered
+               found: 1 changed file with no coverage record
+               why: a changed file with no coverage record is not counted as covered; add it to coverage.changedFiles.ignore only when it holds no code
+               - no coverage record: src/fleet/new-search.js
+               from: examples/blocked/changed-files.txt:2  changed: src/booking/booking.js -> src/booking/booking.js
+               from: examples/blocked/changed-files.txt:3  changed: src/fleet/availability.js -> src/fleet/availability.js
+               from: examples/blocked/changed-files.txt:4  changed: src/fleet/new-search.js -> no coverage record
+               from: examples/blocked/coverage/lcov.info:2  src/booking/booking.js: 5 of 8 branches covered
+               from: examples/blocked/coverage/lcov.info:65  src/fleet/availability.js: 6 of 10 branches covered
+               basis: "The coverage of branches in a control flow graph." (branch coverage, https://glossary.istqb.org/en_US/term/branch-coverage)
+               basis: "SF:<path to the source file>" (TRACEFILE FORMAT, https://manpages.debian.org/testing/lcov/geninfo.1.en.html)
+
+Open defects (5 gates)
+
+  NOT MET      open-defects:blocker  Maximum open defects by severity
+               requirement: at most 0 open blocker defects
+               found: 1 open blocker defect in 15 defects
+               why: 1 defect open, above 0
+               - BR-101 (Open)
+               from: examples/blocked/defects.csv:2  BR-101: severity Blocker, status Open
+               basis: "The degree of impact that a defect has on the development, testing or operation of a component or system." (severity, https://glossary.istqb.org/en_US/term/severity)
+               basis: "An imperfection or deficiency in a work product where it does not meet its requirements or specifications or impairs its intended use." (defect, https://glossary.istqb.org/en_US/term/defect)
+
+  NOT MET      open-defects:critical  Maximum open defects by severity
+               requirement: at most 0 open critical defects
+               found: 1 open critical defect in 15 defects
+               why: 1 defect open, above 0
+               - BR-102 (In Progress)
+               from: examples/blocked/defects.csv:3  BR-102: severity Critical, status In Progress
+               basis: "The degree of impact that a defect has on the development, testing or operation of a component or system." (severity, https://glossary.istqb.org/en_US/term/severity)
+               basis: "An imperfection or deficiency in a work product where it does not meet its requirements or specifications or impairs its intended use." (defect, https://glossary.istqb.org/en_US/term/defect)
+
+  NOT MET      open-defects:major  Maximum open defects by severity
+               requirement: at most 3 open major defects
+               found: 4 open major defects in 15 defects
+               why: 4 defects open, above 3
+               - BR-103 (Open)
+               - BR-104 (Open)
+               - BR-105 (In Progress)
+               - BR-106 (Open)
+               from: examples/blocked/defects.csv:4  BR-103: severity Major, status Open
+               from: examples/blocked/defects.csv:5  BR-104: severity Major, status Open
+               from: examples/blocked/defects.csv:6  BR-105: severity Major, status In Progress
+               from: examples/blocked/defects.csv:7  BR-106: severity Major, status Open
+               basis: "The degree of impact that a defect has on the development, testing or operation of a component or system." (severity, https://glossary.istqb.org/en_US/term/severity)
+               basis: "An imperfection or deficiency in a work product where it does not meet its requirements or specifications or impairs its intended use." (defect, https://glossary.istqb.org/en_US/term/defect)
+
+  MET          defect-severity  Every open defect has a severity
+               requirement: every open defect has a severity
+               found: 0 open defects with no severity
+               basis: "The degree of impact that a defect has on the development, testing or operation of a component or system." (severity, https://glossary.istqb.org/en_US/term/severity)
+               basis: "An imperfection or deficiency in a work product where it does not meet its requirements or specifications or impairs its intended use." (defect, https://glossary.istqb.org/en_US/term/defect)
+
+  MET          open-defects:total  Maximum open defects in all
+               requirement: at most 15 open defects in all
+               found: 11 open defects in 15 defects
+               - 1 Blocker
+               - 1 Critical
+               - 4 Major
+               - 5 Minor
+               from: examples/blocked/defects.csv:2  BR-101: severity Blocker, status Open
+               from: examples/blocked/defects.csv:3  BR-102: severity Critical, status In Progress
+               from: examples/blocked/defects.csv:4  BR-103: severity Major, status Open
+               from: examples/blocked/defects.csv:5  BR-104: severity Major, status Open
+               from: examples/blocked/defects.csv:6  BR-105: severity Major, status In Progress
+               from: examples/blocked/defects.csv:7  BR-106: severity Major, status Open
+               from: examples/blocked/defects.csv:8  BR-107: severity Minor, status Open
+               from: examples/blocked/defects.csv:9  BR-108: severity Minor, status Open
+               from: examples/blocked/defects.csv:10  BR-109: severity Minor, status Open
+               from: examples/blocked/defects.csv:11  BR-110: severity Minor, status Open
+               from: examples/blocked/defects.csv:12  BR-111: severity Minor, status Open
+               basis: "The degree of impact that a defect has on the development, testing or operation of a component or system." (severity, https://glossary.istqb.org/en_US/term/severity)
+               basis: "An imperfection or deficiency in a work product where it does not meet its requirements or specifications or impairs its intended use." (defect, https://glossary.istqb.org/en_US/term/defect)
+
+Evidence (1 gate)
+
+  NOT MET      evidence-files  Required evidence files
+               requirement: 2 required files present
+               found: 1 of 2 present
+               why: a required file is missing, empty, not a regular file or behind a symbolic link
+               - reports/release-notes-approved.txt: missing
+               from: examples/blocked/evidence/reports/signed-test-report.txt  reports/signed-test-report.txt: present, 109 bytes
+               from: examples/blocked/evidence/reports/release-notes-approved.txt  reports/release-notes-approved.txt: missing (no such file)
+               basis: "The set of conditions for officially completing a defined task." (exit criteria, https://glossary.istqb.org/en_US/term/exit-criteria)
+
+DECISION: NO-GO - 12 gates not met

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="rental.booking.BookingTest" tests="10" failures="1" errors="0" skipped="0" time="1.5">
+  <testcase name="createsBookingForOneBike" classname="rental.booking.BookingTest" time="0.021"/>
+  <testcase name="createsBookingForTwoBikes" classname="rental.booking.BookingTest" time="0.021"/>
+  <testcase name="rejectsBookingInThePast" classname="rental.booking.BookingTest" time="0.021"/>
+  <testcase name="rejectsBookingOverTheFleetSize" classname="rental.booking.BookingTest" time="0.021"/>
+  <testcase name="cancelsBookingWithinOneHour" classname="rental.booking.BookingTest" time="0.021">
+    <failure message="refund of the deposit was not queued" type="AssertionError">refund of the deposit was not queued</failure>
+  </testcase>
+  <testcase name="keepsDepositOnLateCancel" classname="rental.booking.BookingTest" time="0.021"/>
+  <testcase name="listsBookingsOfOneCustomer" classname="rental.booking.BookingTest" time="0.021"/>
+  <testcase name="extendsBookingByOneDay" classname="rental.booking.BookingTest" time="0.021"/>
+  <testcase name="sendsConfirmationMessage" classname="rental.booking.BookingTest" time="0.021"/>
+  <testcase name="roundsPriceToTheCent" classname="rental.booking.BookingTest" time="0.021"/>
+</testsuite>

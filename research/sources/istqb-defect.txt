@@ -1,0 +1,6 @@
+Source: https://glossary.istqb.org/en_US/term/defect
+Read from: https://api.glossary.istqb.org/v1/terms/defect (the service that the glossary page calls)
+
+ISTQB Glossary, term: defect
+
+Definition: An imperfection or deficiency in a work product where it does not meet its requirements or specifications or impairs its intended use.

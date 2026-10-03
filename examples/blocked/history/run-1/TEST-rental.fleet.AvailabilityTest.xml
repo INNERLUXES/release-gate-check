@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="rental.fleet.AvailabilityTest" tests="12" failures="1" errors="0" skipped="0" time="1.5">
+  <testcase name="showsBikesNearStation" classname="rental.fleet.AvailabilityTest" time="0.021">
+    <failure message="station list was empty" type="AssertionError">station list was empty</failure>
+  </testcase>
+  <testcase name="hidesBikesInRepair" classname="rental.fleet.AvailabilityTest" time="0.021"/>
+  <testcase name="countsFreeBikesPerStation" classname="rental.fleet.AvailabilityTest" time="0.021"/>
+  <testcase name="sortsStationsByDistance" classname="rental.fleet.AvailabilityTest" time="0.021"/>
+  <testcase name="showsChildBikes" classname="rental.fleet.AvailabilityTest" time="0.021"/>
+  <testcase name="showsElectricBikes" classname="rental.fleet.AvailabilityTest" time="0.021"/>
+  <testcase name="marksBikesAsReturned" classname="rental.fleet.AvailabilityTest" time="0.021"/>
+  <testcase name="blocksReturnToAFullStation" classname="rental.fleet.AvailabilityTest" time="0.021"/>
+  <testcase name="movesBikeBetweenStations" classname="rental.fleet.AvailabilityTest" time="0.021"/>
+  <testcase name="listsStationsOfTheCity" classname="rental.fleet.AvailabilityTest" time="0.021"/>
+  <testcase name="readsTheLiveFeed" classname="rental.fleet.AvailabilityTest" time="0.021"/>
+  <testcase name="fallsBackToTheLastFeed" classname="rental.fleet.AvailabilityTest" time="0.021"/>
+</testsuite>

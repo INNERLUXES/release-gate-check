@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="rental.payment.DepositTest" tests="8" failures="0" errors="0" skipped="0" time="1.5">
+  <testcase name="holdsDepositOnPickup" classname="rental.payment.DepositTest" time="0.021"/>
+  <testcase name="refundsDepositAfterReturn" classname="rental.payment.DepositTest" time="0.021"/>
+  <testcase name="refundsPartOfDepositForDamage" classname="rental.payment.DepositTest" time="0.021"/>
+  <testcase name="rejectsExpiredCard" classname="rental.payment.DepositTest" time="0.021"/>
+  <testcase name="keepsDepositForLateReturn" classname="rental.payment.DepositTest" time="0.021"/>
+  <testcase name="showsDepositInTheReceipt" classname="rental.payment.DepositTest" time="0.021"/>
+  <testcase name="retriesFailedHold" classname="rental.payment.DepositTest" time="0.021"/>
+  <testcase name="neverHoldsTwice" classname="rental.payment.DepositTest" time="0.021"/>
+</testsuite>

@@ -1,0 +1,1 @@
+Release notes for release 2.4, approved by the product owner.

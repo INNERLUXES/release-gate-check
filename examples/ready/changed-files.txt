@@ -1,0 +1,4 @@
+# files changed since the last release
+src/booking/booking.js
+src/web/search.js
+docs/booking-guide.md

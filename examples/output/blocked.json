@@ -1,0 +1,652 @@
+{
+  "tool": "release-gate-check",
+  "version": "1.0.0",
+  "criteria": {
+    "file": "examples/criteria.json",
+    "name": "Bike rental booking service, release 2.4"
+  },
+  "strict": false,
+  "inputs": {
+    "results": {
+      "paths": "examples/blocked/results",
+      "files": 3,
+      "testcases": 30,
+      "tests": 30
+    },
+    "history": [
+      {
+        "run": "run-1",
+        "files": 3,
+        "tests": 30
+      },
+      {
+        "run": "run-2",
+        "files": 3,
+        "tests": 30
+      }
+    ],
+    "coverage": {
+      "reports": [
+        {
+          "file": "examples/blocked/coverage/lcov.info",
+          "kind": "lcov",
+          "files": 4
+        }
+      ],
+      "files": 4
+    },
+    "changed": {
+      "file": "examples/blocked/changed-files.txt",
+      "files": 4
+    },
+    "defects": {
+      "file": "examples/blocked/defects.csv",
+      "defects": 15
+    },
+    "evidence": {
+      "root": "examples/blocked/evidence",
+      "required": 2
+    }
+  },
+  "gates": [
+    {
+      "id": "pass-rate",
+      "area": "tests",
+      "title": "Minimum pass rate",
+      "status": "not-met",
+      "requirement": "at least 98% of the executed tests pass",
+      "actual": "96.42% (27 of 28 executed tests passed, 1 flaky test counted as passed)",
+      "reason": "1 test failed or had an error",
+      "details": [
+        "failed: rental.booking.BookingTest > createsBookingForTwoBikes"
+      ],
+      "facts": [
+        {
+          "text": "10 testcases read",
+          "at": "examples/blocked/results/TEST-rental.booking.BookingTest.xml"
+        },
+        {
+          "text": "12 testcases read",
+          "at": "examples/blocked/results/TEST-rental.fleet.AvailabilityTest.xml"
+        },
+        {
+          "text": "8 testcases read",
+          "at": "examples/blocked/results/TEST-rental.payment.DepositTest.xml"
+        },
+        {
+          "text": "failed: rental.booking.BookingTest > createsBookingForTwoBikes (expected 2 bikes on the booking but found 1)",
+          "at": "examples/blocked/results/TEST-rental.booking.BookingTest.xml:4"
+        }
+      ],
+      "basis": [
+        {
+          "text": "The set of conditions for officially completing a defined task.",
+          "section": "exit criteria",
+          "source": "https://glossary.istqb.org/en_US/term/exit-criteria"
+        },
+        {
+          "text": "<xs:element name=\"testcase\" minOccurs=\"0\" maxOccurs=\"unbounded\">",
+          "section": "testsuite",
+          "source": "https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd"
+        }
+      ]
+    },
+    {
+      "id": "critical-suites",
+      "area": "tests",
+      "title": "Failing tests in critical suites",
+      "status": "not-met",
+      "requirement": "at most 0 failing tests in rental.booking.BookingTest and rental.payment.DepositTest",
+      "actual": "1 failing in 2 suites with results",
+      "reason": "1 failing test, above 0",
+      "details": [
+        "failed: rental.booking.BookingTest > createsBookingForTwoBikes"
+      ],
+      "facts": [
+        {
+          "text": "rental.booking.BookingTest: 10 tests",
+          "at": "examples/blocked/results/TEST-rental.booking.BookingTest.xml:3"
+        },
+        {
+          "text": "failed: rental.booking.BookingTest > createsBookingForTwoBikes",
+          "at": "examples/blocked/results/TEST-rental.booking.BookingTest.xml:4"
+        },
+        {
+          "text": "rental.payment.DepositTest: 8 tests",
+          "at": "examples/blocked/results/TEST-rental.payment.DepositTest.xml:3"
+        }
+      ],
+      "basis": [
+        {
+          "text": "The set of conditions for officially completing a defined task.",
+          "section": "exit criteria",
+          "source": "https://glossary.istqb.org/en_US/term/exit-criteria"
+        },
+        {
+          "text": "<xs:attribute name=\"classname\" type=\"xs:string\"/>",
+          "section": "testcase",
+          "source": "https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd"
+        }
+      ]
+    },
+    {
+      "id": "skipped-share",
+      "area": "tests",
+      "title": "Maximum skipped share",
+      "status": "not-met",
+      "requirement": "at most 5% of the tests skipped",
+      "actual": "6.66% (2 of 30 tests skipped)",
+      "reason": "too many tests were skipped",
+      "details": [
+        "rental.fleet.AvailabilityTest > readsTheLiveFeed",
+        "rental.fleet.AvailabilityTest > fallsBackToTheLastFeed"
+      ],
+      "facts": [
+        {
+          "text": "skipped: rental.fleet.AvailabilityTest > readsTheLiveFeed",
+          "at": "examples/blocked/results/TEST-rental.fleet.AvailabilityTest.xml:13"
+        },
+        {
+          "text": "skipped: rental.fleet.AvailabilityTest > fallsBackToTheLastFeed",
+          "at": "examples/blocked/results/TEST-rental.fleet.AvailabilityTest.xml:16"
+        }
+      ],
+      "basis": [
+        {
+          "text": "The set of conditions for officially completing a defined task.",
+          "section": "exit criteria",
+          "source": "https://glossary.istqb.org/en_US/term/exit-criteria"
+        },
+        {
+          "text": "<xs:element name=\"skipped\" nillable=\"true\" minOccurs=\"0\" maxOccurs=\"1\">",
+          "section": "testcase",
+          "source": "https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd"
+        }
+      ]
+    },
+    {
+      "id": "flaky-count",
+      "area": "tests",
+      "title": "Maximum flaky tests",
+      "status": "not-met",
+      "requirement": "at most 0 flaky tests",
+      "actual": "1 flaky test",
+      "reason": "1 test passed and failed in one run, or passed after a retry",
+      "details": [
+        "rental.payment.DepositTest > refundsDepositAfterReturn"
+      ],
+      "facts": [
+        {
+          "text": "flaky: rental.payment.DepositTest > refundsDepositAfterReturn (passed, 1 retry written by the runner)",
+          "at": "examples/blocked/results/TEST-rental.payment.DepositTest.xml:4"
+        }
+      ],
+      "basis": [
+        {
+          "text": "Then this test will be counted as a flaky test.",
+          "section": "Output flaky re-run information on the screen",
+          "source": "https://maven.apache.org/surefire/maven-surefire-plugin/examples/rerun-failing-tests.html"
+        },
+        {
+          "text": "This will fail the build if more than the specified number of tests are flaky, i.e. if they had a successful run after previously failing.",
+          "section": "Re-run and fail the build upon flaky test count",
+          "source": "https://maven.apache.org/surefire/maven-surefire-plugin/examples/rerun-failing-tests.html"
+        }
+      ]
+    },
+    {
+      "id": "unexplained-failures",
+      "area": "tests",
+      "title": "No unexplained failure in the last runs",
+      "status": "not-met",
+      "requirement": "no test failed in the last 3 runs unless it is explained (1 test explained)",
+      "actual": "2 unexplained failing tests in 3 runs",
+      "reason": "a test failed in a recent run and nobody has explained it",
+      "details": [
+        "rental.booking.BookingTest > cancelsBookingWithinOneHour (failed in run-1)",
+        "rental.booking.BookingTest > createsBookingForTwoBikes (failed in release candidate)"
+      ],
+      "facts": [
+        {
+          "text": "run run-1: 2 failing tests",
+          "at": ""
+        },
+        {
+          "text": "run run-2: 1 failing test",
+          "at": ""
+        },
+        {
+          "text": "run release candidate: 1 failing test",
+          "at": ""
+        },
+        {
+          "text": "unexplained: rental.booking.BookingTest > cancelsBookingWithinOneHour",
+          "at": "examples/blocked/history/run-1/TEST-rental.booking.BookingTest.xml:7"
+        },
+        {
+          "text": "unexplained: rental.booking.BookingTest > createsBookingForTwoBikes",
+          "at": "examples/blocked/results/TEST-rental.booking.BookingTest.xml:4"
+        }
+      ],
+      "basis": [
+        {
+          "text": "The set of conditions for officially completing a defined task.",
+          "section": "exit criteria",
+          "source": "https://glossary.istqb.org/en_US/term/exit-criteria"
+        },
+        {
+          "text": "<xs:element name=\"testcase\" minOccurs=\"0\" maxOccurs=\"unbounded\">",
+          "section": "testsuite",
+          "source": "https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd"
+        }
+      ]
+    },
+    {
+      "id": "line-coverage",
+      "area": "coverage",
+      "title": "Minimum line coverage",
+      "status": "met",
+      "requirement": "at least 80% of the lines covered",
+      "actual": "81.66% (49 of 60 lines in 3 files; 1 file left out by coverage.exclude)",
+      "reason": "",
+      "details": [],
+      "facts": [
+        {
+          "text": "src/booking/booking.js: 18 of 20 lines covered",
+          "at": "examples/blocked/coverage/lcov.info:2"
+        },
+        {
+          "text": "src/fleet/availability.js: 17 of 25 lines covered",
+          "at": "examples/blocked/coverage/lcov.info:65"
+        },
+        {
+          "text": "src/payment/deposit.js: 14 of 15 lines covered",
+          "at": "examples/blocked/coverage/lcov.info:37"
+        }
+      ],
+      "basis": [
+        {
+          "text": "The degree to which specified coverage items are exercised by a test suite, expressed as a percentage.",
+          "section": "coverage",
+          "source": "https://glossary.istqb.org/en_US/term/coverage"
+        },
+        {
+          "text": "DA:<line number>,<execution count>[,<checksum>]",
+          "section": "TRACEFILE FORMAT",
+          "source": "https://manpages.debian.org/testing/lcov/geninfo.1.en.html"
+        }
+      ]
+    },
+    {
+      "id": "branch-coverage",
+      "area": "coverage",
+      "title": "Minimum branch coverage",
+      "status": "not-met",
+      "requirement": "at least 70% of the branches covered",
+      "actual": "66.66% (16 of 24 branches; 1 file left out by coverage.exclude)",
+      "reason": "too few branches are covered",
+      "details": [],
+      "facts": [
+        {
+          "text": "src/booking/booking.js: 5 of 8 branches covered",
+          "at": "examples/blocked/coverage/lcov.info:2"
+        },
+        {
+          "text": "src/fleet/availability.js: 6 of 10 branches covered",
+          "at": "examples/blocked/coverage/lcov.info:65"
+        },
+        {
+          "text": "src/payment/deposit.js: 5 of 6 branches covered",
+          "at": "examples/blocked/coverage/lcov.info:37"
+        }
+      ],
+      "basis": [
+        {
+          "text": "The coverage of branches in a control flow graph.",
+          "section": "branch coverage",
+          "source": "https://glossary.istqb.org/en_US/term/branch-coverage"
+        },
+        {
+          "text": "BRDA:<line_number>,[<exception>]<block>,<branch>,<taken>",
+          "section": "TRACEFILE FORMAT",
+          "source": "https://manpages.debian.org/testing/lcov/geninfo.1.en.html"
+        }
+      ]
+    },
+    {
+      "id": "changed-line-coverage",
+      "area": "coverage",
+      "title": "Minimum line coverage of changed files",
+      "status": "not-met",
+      "requirement": "at least 90% of the lines of changed files covered",
+      "actual": "1 changed file with no coverage record",
+      "reason": "a changed file with no coverage record is not counted as covered; add it to coverage.changedFiles.ignore only when it holds no code",
+      "details": [
+        "no coverage record: src/fleet/new-search.js"
+      ],
+      "facts": [
+        {
+          "text": "changed: src/booking/booking.js -> src/booking/booking.js",
+          "at": "examples/blocked/changed-files.txt:2"
+        },
+        {
+          "text": "changed: src/fleet/availability.js -> src/fleet/availability.js",
+          "at": "examples/blocked/changed-files.txt:3"
+        },
+        {
+          "text": "changed: src/fleet/new-search.js -> no coverage record",
+          "at": "examples/blocked/changed-files.txt:4"
+        },
+        {
+          "text": "src/booking/booking.js: 18 of 20 lines covered",
+          "at": "examples/blocked/coverage/lcov.info:2"
+        },
+        {
+          "text": "src/fleet/availability.js: 17 of 25 lines covered",
+          "at": "examples/blocked/coverage/lcov.info:65"
+        }
+      ],
+      "basis": [
+        {
+          "text": "The degree to which specified coverage items are exercised by a test suite, expressed as a percentage.",
+          "section": "coverage",
+          "source": "https://glossary.istqb.org/en_US/term/coverage"
+        },
+        {
+          "text": "SF:<path to the source file>",
+          "section": "TRACEFILE FORMAT",
+          "source": "https://manpages.debian.org/testing/lcov/geninfo.1.en.html"
+        }
+      ]
+    },
+    {
+      "id": "changed-branch-coverage",
+      "area": "coverage",
+      "title": "Minimum branch coverage of changed files",
+      "status": "not-met",
+      "requirement": "at least 60% of the branches of changed files covered",
+      "actual": "1 changed file with no coverage record",
+      "reason": "a changed file with no coverage record is not counted as covered; add it to coverage.changedFiles.ignore only when it holds no code",
+      "details": [
+        "no coverage record: src/fleet/new-search.js"
+      ],
+      "facts": [
+        {
+          "text": "changed: src/booking/booking.js -> src/booking/booking.js",
+          "at": "examples/blocked/changed-files.txt:2"
+        },
+        {
+          "text": "changed: src/fleet/availability.js -> src/fleet/availability.js",
+          "at": "examples/blocked/changed-files.txt:3"
+        },
+        {
+          "text": "changed: src/fleet/new-search.js -> no coverage record",
+          "at": "examples/blocked/changed-files.txt:4"
+        },
+        {
+          "text": "src/booking/booking.js: 5 of 8 branches covered",
+          "at": "examples/blocked/coverage/lcov.info:2"
+        },
+        {
+          "text": "src/fleet/availability.js: 6 of 10 branches covered",
+          "at": "examples/blocked/coverage/lcov.info:65"
+        }
+      ],
+      "basis": [
+        {
+          "text": "The coverage of branches in a control flow graph.",
+          "section": "branch coverage",
+          "source": "https://glossary.istqb.org/en_US/term/branch-coverage"
+        },
+        {
+          "text": "SF:<path to the source file>",
+          "section": "TRACEFILE FORMAT",
+          "source": "https://manpages.debian.org/testing/lcov/geninfo.1.en.html"
+        }
+      ]
+    },
+    {
+      "id": "open-defects:blocker",
+      "area": "defects",
+      "title": "Maximum open defects by severity",
+      "status": "not-met",
+      "requirement": "at most 0 open blocker defects",
+      "actual": "1 open blocker defect in 15 defects",
+      "reason": "1 defect open, above 0",
+      "details": [
+        "BR-101 (Open)"
+      ],
+      "facts": [
+        {
+          "text": "BR-101: severity Blocker, status Open",
+          "at": "examples/blocked/defects.csv:2"
+        }
+      ],
+      "basis": [
+        {
+          "text": "The degree of impact that a defect has on the development, testing or operation of a component or system.",
+          "section": "severity",
+          "source": "https://glossary.istqb.org/en_US/term/severity"
+        },
+        {
+          "text": "An imperfection or deficiency in a work product where it does not meet its requirements or specifications or impairs its intended use.",
+          "section": "defect",
+          "source": "https://glossary.istqb.org/en_US/term/defect"
+        }
+      ]
+    },
+    {
+      "id": "open-defects:critical",
+      "area": "defects",
+      "title": "Maximum open defects by severity",
+      "status": "not-met",
+      "requirement": "at most 0 open critical defects",
+      "actual": "1 open critical defect in 15 defects",
+      "reason": "1 defect open, above 0",
+      "details": [
+        "BR-102 (In Progress)"
+      ],
+      "facts": [
+        {
+          "text": "BR-102: severity Critical, status In Progress",
+          "at": "examples/blocked/defects.csv:3"
+        }
+      ],
+      "basis": [
+        {
+          "text": "The degree of impact that a defect has on the development, testing or operation of a component or system.",
+          "section": "severity",
+          "source": "https://glossary.istqb.org/en_US/term/severity"
+        },
+        {
+          "text": "An imperfection or deficiency in a work product where it does not meet its requirements or specifications or impairs its intended use.",
+          "section": "defect",
+          "source": "https://glossary.istqb.org/en_US/term/defect"
+        }
+      ]
+    },
+    {
+      "id": "open-defects:major",
+      "area": "defects",
+      "title": "Maximum open defects by severity",
+      "status": "not-met",
+      "requirement": "at most 3 open major defects",
+      "actual": "4 open major defects in 15 defects",
+      "reason": "4 defects open, above 3",
+      "details": [
+        "BR-103 (Open)",
+        "BR-104 (Open)",
+        "BR-105 (In Progress)",
+        "BR-106 (Open)"
+      ],
+      "facts": [
+        {
+          "text": "BR-103: severity Major, status Open",
+          "at": "examples/blocked/defects.csv:4"
+        },
+        {
+          "text": "BR-104: severity Major, status Open",
+          "at": "examples/blocked/defects.csv:5"
+        },
+        {
+          "text": "BR-105: severity Major, status In Progress",
+          "at": "examples/blocked/defects.csv:6"
+        },
+        {
+          "text": "BR-106: severity Major, status Open",
+          "at": "examples/blocked/defects.csv:7"
+        }
+      ],
+      "basis": [
+        {
+          "text": "The degree of impact that a defect has on the development, testing or operation of a component or system.",
+          "section": "severity",
+          "source": "https://glossary.istqb.org/en_US/term/severity"
+        },
+        {
+          "text": "An imperfection or deficiency in a work product where it does not meet its requirements or specifications or impairs its intended use.",
+          "section": "defect",
+          "source": "https://glossary.istqb.org/en_US/term/defect"
+        }
+      ]
+    },
+    {
+      "id": "defect-severity",
+      "area": "defects",
+      "title": "Every open defect has a severity",
+      "status": "met",
+      "requirement": "every open defect has a severity",
+      "actual": "0 open defects with no severity",
+      "reason": "",
+      "details": [],
+      "facts": [],
+      "basis": [
+        {
+          "text": "The degree of impact that a defect has on the development, testing or operation of a component or system.",
+          "section": "severity",
+          "source": "https://glossary.istqb.org/en_US/term/severity"
+        },
+        {
+          "text": "An imperfection or deficiency in a work product where it does not meet its requirements or specifications or impairs its intended use.",
+          "section": "defect",
+          "source": "https://glossary.istqb.org/en_US/term/defect"
+        }
+      ]
+    },
+    {
+      "id": "open-defects:total",
+      "area": "defects",
+      "title": "Maximum open defects in all",
+      "status": "met",
+      "requirement": "at most 15 open defects in all",
+      "actual": "11 open defects in 15 defects",
+      "reason": "",
+      "details": [
+        "1 Blocker",
+        "1 Critical",
+        "4 Major",
+        "5 Minor"
+      ],
+      "facts": [
+        {
+          "text": "BR-101: severity Blocker, status Open",
+          "at": "examples/blocked/defects.csv:2"
+        },
+        {
+          "text": "BR-102: severity Critical, status In Progress",
+          "at": "examples/blocked/defects.csv:3"
+        },
+        {
+          "text": "BR-103: severity Major, status Open",
+          "at": "examples/blocked/defects.csv:4"
+        },
+        {
+          "text": "BR-104: severity Major, status Open",
+          "at": "examples/blocked/defects.csv:5"
+        },
+        {
+          "text": "BR-105: severity Major, status In Progress",
+          "at": "examples/blocked/defects.csv:6"
+        },
+        {
+          "text": "BR-106: severity Major, status Open",
+          "at": "examples/blocked/defects.csv:7"
+        },
+        {
+          "text": "BR-107: severity Minor, status Open",
+          "at": "examples/blocked/defects.csv:8"
+        },
+        {
+          "text": "BR-108: severity Minor, status Open",
+          "at": "examples/blocked/defects.csv:9"
+        },
+        {
+          "text": "BR-109: severity Minor, status Open",
+          "at": "examples/blocked/defects.csv:10"
+        },
+        {
+          "text": "BR-110: severity Minor, status Open",
+          "at": "examples/blocked/defects.csv:11"
+        },
+        {
+          "text": "BR-111: severity Minor, status Open",
+          "at": "examples/blocked/defects.csv:12"
+        }
+      ],
+      "basis": [
+        {
+          "text": "The degree of impact that a defect has on the development, testing or operation of a component or system.",
+          "section": "severity",
+          "source": "https://glossary.istqb.org/en_US/term/severity"
+        },
+        {
+          "text": "An imperfection or deficiency in a work product where it does not meet its requirements or specifications or impairs its intended use.",
+          "section": "defect",
+          "source": "https://glossary.istqb.org/en_US/term/defect"
+        }
+      ]
+    },
+    {
+      "id": "evidence-files",
+      "area": "evidence",
+      "title": "Required evidence files",
+      "status": "not-met",
+      "requirement": "2 required files present",
+      "actual": "1 of 2 present",
+      "reason": "a required file is missing, empty, not a regular file or behind a symbolic link",
+      "details": [
+        "reports/release-notes-approved.txt: missing"
+      ],
+      "facts": [
+        {
+          "text": "reports/signed-test-report.txt: present, 109 bytes",
+          "at": "examples/blocked/evidence/reports/signed-test-report.txt"
+        },
+        {
+          "text": "reports/release-notes-approved.txt: missing (no such file)",
+          "at": "examples/blocked/evidence/reports/release-notes-approved.txt"
+        }
+      ],
+      "basis": [
+        {
+          "text": "The set of conditions for officially completing a defined task.",
+          "section": "exit criteria",
+          "source": "https://glossary.istqb.org/en_US/term/exit-criteria"
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "met": 3,
+    "notMet": 12,
+    "notChecked": 0
+  },
+  "decision": {
+    "verdict": "no-go",
+    "go": false,
+    "reasons": [
+      "12 gates not met"
+    ]
+  },
+  "notes": []
+}

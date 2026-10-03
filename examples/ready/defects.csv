@@ -1,0 +1,11 @@
+Key,Summary,Priority,State,Component
+BR-103,Station list is slow after midnight,Major,Open,fleet
+BR-106,Late fee is rounded the wrong way,Major,In Progress,payment
+BR-107,Typo on the cancel page,Minor,Open,booking
+BR-108,Footer link is grey,Minor,Open,web
+BR-109,Old banner is still in the assets,Minor,Open,web
+BR-111,Empty state text is too long,Minor,Open,web
+BR-101,Booking page freezes on a double tap,Blocker,Done,booking
+BR-102,"Deposit shows ""0"" for large, bulk bookings",Critical,Closed,payment
+BR-104,Receipt misses the tax line,Major,Done,payment
+BR-105,Map pin is off by a street,Major,Done,fleet

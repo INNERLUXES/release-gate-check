@@ -1,0 +1,2 @@
+Test report for release 2.4, signed by the test lead.
+All planned test cycles are listed with their results.

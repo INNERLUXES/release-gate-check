@@ -1,0 +1,6 @@
+Source: https://glossary.istqb.org/en_US/term/branch-coverage
+Read from: https://api.glossary.istqb.org/v1/terms/branch-coverage (the service that the glossary page calls)
+
+ISTQB Glossary, term: branch coverage
+
+Definition: The coverage of branches in a control flow graph.

@@ -1,0 +1,35 @@
+{
+  "name": "Bike rental booking service, release 2.4",
+  "tests": {
+    "minPassRate": 98,
+    "maxSkippedShare": 5,
+    "maxFlaky": 0,
+    "criticalSuites": {
+      "suites": ["rental.booking.BookingTest", "rental.payment.DepositTest"],
+      "maxFailing": 0
+    },
+    "noUnexplainedFailures": {
+      "lastRuns": 3,
+      "explained": ["rental.fleet.AvailabilityTest > showsBikesNearStation"]
+    }
+  },
+  "coverage": {
+    "minLine": 80,
+    "minBranch": 70,
+    "exclude": ["src/vendored/**"],
+    "changedFiles": {
+      "minLine": 90,
+      "minBranch": 60,
+      "ignore": ["docs/**", "*.md"]
+    }
+  },
+  "defects": {
+    "columns": { "id": "Key", "severity": "Priority", "status": "State" },
+    "closedStatuses": ["Done", "Closed", "Rejected"],
+    "maxOpen": { "blocker": 0, "critical": 0, "major": 3 },
+    "maxOpenTotal": 15
+  },
+  "evidence": {
+    "required": ["reports/signed-test-report.txt", "reports/release-notes-approved.txt"]
+  }
+}

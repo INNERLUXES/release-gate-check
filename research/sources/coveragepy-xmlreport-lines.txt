@@ -1,0 +1,40 @@
+Source: https://raw.githubusercontent.com/nedbat/coveragepy/master/coverage/xmlreport.py
+
+xmlreport.py of coverage.py, the code that writes the line elements of a class (lines left out between the parts are not shown)
+
+def rate(hit: int, num: int) -> str:
+    """Return the fraction of `hit`/`num`, as a string."""
+    if num == 0:
+        return "1"
+    else:
+        return f"{hit / num:.4g}"
+
+[...]
+
+        xclass.setAttribute("filename", rel_name.replace("\\", "/"))
+        xclass.setAttribute("complexity", "0")
+
+        branch_stats = analysis.branch_stats()
+        missing_branch_arcs = analysis.missing_branch_arcs()
+
+        # For each statement, create an XML "line" element.
+        for line in sorted(analysis.statements):
+            xline = self.xml_out.createElement("line")
+            xline.setAttribute("number", str(line))
+
+            # Q: can we get info about the number of times a statement is
+            # executed?  If so, that should be recorded here.
+            xline.setAttribute("hits", str(int(line not in analysis.missing)))
+
+            if has_arcs:
+                if line in branch_stats:
+                    total, taken = branch_stats[line]
+                    xline.setAttribute("branch", "true")
+                    xline.setAttribute(
+                        "condition-coverage",
+                        f"{100 * taken // total}% ({taken}/{total})",
+                    )
+                if line in missing_branch_arcs:
+                    annlines = ["exit" if b < 0 else str(b) for b in missing_branch_arcs[line]]
+                    xline.setAttribute("missing-branches", ",".join(annlines))
+            appendChild(xlines, xline)

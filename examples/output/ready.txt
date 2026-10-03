@@ -1,0 +1,78 @@
+release-gate-check: examples/criteria.json (Bike rental booking service, release 2.4)
+inputs: results: 3 files, 30 testcases, 30 distinct tests; 2 earlier runs; coverage: 2 reports, 6 source files; 3 changed files; 10 defects; evidence folder examples/ready/evidence
+gates: 15 met, 0 not met, 0 not checked
+
+Test results (5 gates)
+
+  MET          pass-rate  Minimum pass rate
+               requirement: at least 98% of the executed tests pass
+               found: 100% (29 of 29 executed tests passed)
+
+  MET          critical-suites  Failing tests in critical suites
+               requirement: at most 0 failing tests in rental.booking.BookingTest and rental.payment.DepositTest
+               found: 0 failing in 2 suites with results
+
+  MET          skipped-share  Maximum skipped share
+               requirement: at most 5% of the tests skipped
+               found: 3.33% (1 of 30 tests skipped)
+               - rental.fleet.AvailabilityTest > readsTheLiveFeed
+
+  MET          flaky-count  Maximum flaky tests
+               requirement: at most 0 flaky tests
+               found: 0 flaky tests
+
+  MET          unexplained-failures  No unexplained failure in the last runs
+               requirement: no test failed in the last 3 runs unless it is explained (1 test explained)
+               found: 0 unexplained failing tests in 3 runs
+
+Coverage (4 gates)
+
+  MET          line-coverage  Minimum line coverage
+               requirement: at least 80% of the lines covered
+               found: 91.46% (75 of 82 lines in 5 files; 1 file left out by coverage.exclude)
+
+  MET          branch-coverage  Minimum branch coverage
+               requirement: at least 70% of the branches covered
+               found: 89.47% (34 of 38 branches; 1 file left out by coverage.exclude)
+
+  MET          changed-line-coverage  Minimum line coverage of changed files
+               requirement: at least 90% of the lines of changed files covered
+               found: 93.33% (28 of 30 lines in 2 changed files, 1 ignored)
+
+  MET          changed-branch-coverage  Minimum branch coverage of changed files
+               requirement: at least 60% of the branches of changed files covered
+               found: 92.85% (13 of 14 branches in 2 changed files, 1 ignored)
+
+Open defects (5 gates)
+
+  MET          open-defects:blocker  Maximum open defects by severity
+               requirement: at most 0 open blocker defects
+               found: 0 open blocker defects in 10 defects
+
+  MET          open-defects:critical  Maximum open defects by severity
+               requirement: at most 0 open critical defects
+               found: 0 open critical defects in 10 defects
+
+  MET          open-defects:major  Maximum open defects by severity
+               requirement: at most 3 open major defects
+               found: 2 open major defects in 10 defects
+               - BR-103 (Open)
+               - BR-106 (In Progress)
+
+  MET          defect-severity  Every open defect has a severity
+               requirement: every open defect has a severity
+               found: 0 open defects with no severity
+
+  MET          open-defects:total  Maximum open defects in all
+               requirement: at most 15 open defects in all
+               found: 6 open defects in 10 defects
+               - 2 Major
+               - 4 Minor
+
+Evidence (1 gate)
+
+  MET          evidence-files  Required evidence files
+               requirement: 2 required files present
+               found: 2 of 2 present
+
+DECISION: GO
