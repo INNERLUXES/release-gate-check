@@ -1,0 +1,7 @@
+* text=auto eol=lf
+# The example inputs are kept byte for byte as written, so a test can read them with LF and with CRLF.
+examples/criteria.json -text
+examples/blocked/** -text
+examples/ready/** -text
+# The example reports are kept as the tool writes them.
+examples/output/** -text
