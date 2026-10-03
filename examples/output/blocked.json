@@ -1,6 +1,6 @@
 {
   "tool": "release-gate-check",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "criteria": {
     "file": "examples/criteria.json",
     "name": "Bike rental booking service, release 2.4"

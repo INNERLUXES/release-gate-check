@@ -1,6 +1,6 @@
 {
   "name": "release-gate-check",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Decide go or no-go for a release against exit criteria that were written before the release, and explain every reason. Reads a criteria file (JSON), JUnit XML results, lcov and Cobertura coverage and a CSV export of open defects, and checks the minimum pass rate, failures in critical suites, the skipped share, flaky tests, failures in the last runs, line and branch coverage overall and for changed files, open defects by severity and required evidence files. Every number comes from the criteria file; a gate with no data is not checked and never counts as met. Never runs a test, no dependencies.",
   "type": "module",
   "main": "src/index.js",

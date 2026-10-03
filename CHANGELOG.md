@@ -1,5 +1,9 @@
 # Changes
 
+## 1.0.1
+
+- A test on Linux and macOS looked for the failing test on line 4 of its result file; the test case is on line 3. The tool itself is unchanged.
+
 ## 1.0.0
 
 First release.

@@ -338,7 +338,7 @@ test('paths: on a system where a backslash is an ordinary character, a file name
   }
   const r = await run({ 'criteria.json': TESTS, 'results/odd\\name.xml': suite([{ name: 'a', result: 'failed' }]) }, [...BASE, '--explain']);
   assert.equal(r.code, 1);
-  assert.match(r.out, /from: results\/odd\\name\.xml:4/);
+  assert.match(r.out, /from: results\/odd\\name\.xml:3/);
 });
 
 test('links: a symbolic link to a folder outside, a link to a file, and a link loop are listed and never followed', LIMIT, async (t) => {

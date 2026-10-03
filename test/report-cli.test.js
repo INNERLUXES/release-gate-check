@@ -161,7 +161,7 @@ test('cli: --help and --version print and exit with 0', async () => {
   const v = await cli(['--version']);
   assert.equal(v.code, 0);
   assert.equal(v.out, `${VERSION}\n`);
-  assert.equal(VERSION, '1.0.0');
+  assert.equal(VERSION, '1.0.1');
 });
 
 test('cli: the usage names every gate and says that the tool has no threshold of its own', () => {

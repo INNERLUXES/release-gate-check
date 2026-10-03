@@ -30,7 +30,7 @@ async function exampleFiles() {
 test('package.json: a zero-dependency Node 22 ES module with the bin, the scripts, the author and the homepage', async () => {
   const pkg = JSON.parse(await read('package.json'));
   assert.equal(pkg.name, 'release-gate-check');
-  assert.equal(pkg.version, '1.0.0');
+  assert.equal(pkg.version, '1.0.1');
   assert.equal(pkg.type, 'module');
   assert.equal(pkg.engines.node, '>=22');
   assert.equal(pkg.homepage, HOMEPAGE);
